@@ -16,12 +16,15 @@ public class Main {
     int[] array = arrayCreator.getArrayOfInteger(arrayLength);
 
     ArrayFilter arrayFilter = new ArrayFilter();
-    String mode = console.getStringValue("Please, choose a filter mode ('[32mfor[0m', '[32mforEach[0m' or '[32mstream[0m').");
-    boolean isModeCorrect = arrayFilter.isFilterModeCorrect(mode);
-    while (!isModeCorrect) {
-      mode = console.getStringValue("[31mThe entered mode is incorrect. Please, try again.[0m");
+    String mode;
+    boolean isModeCorrect;
+    do {
+      mode = console.getStringValue("Please, choose a filter mode ('[32mfor[0m', '[32mforEach[0m' or '[32mstream[0m').");
       isModeCorrect = arrayFilter.isFilterModeCorrect(mode);
-    }
+      if (!isModeCorrect) {
+        System.out.println("[31mThe entered mode is incorrect.[0m");
+      }
+    } while (!isModeCorrect);
 
     ArrayList<Integer> resultArray = arrayFilter.getEvenNumbers(array, mode);
 
