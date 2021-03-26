@@ -7,19 +7,23 @@ import java.util.stream.IntStream;
 public class ArrayFilter {
 
   private enum ArrayFilterModes {
-    FOR ("for"),
-    FOR_EACH ("forEach"),
-    STREAM ("stream");
+    FOR("for"),
+    FOR_EACH("forEach"),
+    STREAM("stream");
 
     private final String title;
 
     ArrayFilterModes(String title) {
       this.title = title;
     }
+
+    public String getTitle() {
+      return title;
+    }
   }
 
   public boolean isFilterModeCorrect(String mode) {
-    return Arrays.stream(ArrayFilterModes.values()).anyMatch(filterMode -> filterMode.title.equals(mode));
+    return Arrays.stream(ArrayFilterModes.values()).anyMatch(filterMode -> filterMode.getTitle().equals(mode));
   }
 
   public ArrayList<Integer> getEvenNumbers(int[] array, String mode) {
